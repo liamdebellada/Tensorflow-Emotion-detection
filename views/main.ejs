@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="client.js"></script>
+  
+  <div style="border: 1px solid red; display:inline-block;">
+    <button onclick=begin()>Begin 5 second scan</button>
+    <h1 id="results"></h1>
+  </div>
+  
+  <style>
+    .vstream {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="videostream" class="vstream">
+    <video id="video" width="720" height="560" autoplay muted></video>
+  </div>
+</body>
+</html>
