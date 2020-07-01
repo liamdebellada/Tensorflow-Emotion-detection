@@ -1,4 +1,4 @@
-var socket = io('https://fbbsvr.ddns.net:80', { transport : ['websocket'] });
+var socket = io('https://fbbsvr.ddns.net', { transport : ['websocket'] });
 socket.on('connect', function(data) {
     socket.emit('join', socket.id);
 });
@@ -23,6 +23,10 @@ var results = []
 
 function getVideo() {
     results = []
+navigator.getUserMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
     navigator.getUserMedia(
         { video: {} },
         stream => video.srcObject = stream,
@@ -40,7 +44,9 @@ video.addEventListener('play', () => {
         setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
             const resizedDetections = faceapi.resizeResults(detections, displaySize)
-            result = resizedDetections[0].expressions
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+	    result = resizedDetections[0].expressions
             results.push(result)
             }, 100)
     } else {

@@ -8,15 +8,20 @@ body {
     height: 100vh;
 }
 
-.vstream {
-    padding: 0;
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    margin: 0 auto;
-    display: inline-block;
-    border-radius: 10px;
+.videowrapper {
+        border-radius: 10px;
     border: 1px solid #d4d4d4;
+}
+
+.vstream {
+       margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    max-width: 100%;
     background: url('camera.png') 20% no-repeat;
     background-size: 125px;
     background-position: center;
