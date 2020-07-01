@@ -2,11 +2,14 @@ const express = require('express')
 const app = express()
 const fs = require("fs");
 var bodyParser = require('body-parser');
+var https = require('https');
+var privateKey = fs.readFileSync('privkey.pem')
+var certificate = fs.readFileSync('cert.pem')
 
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.json())
 
+app.use(express.json())
+app.use(express.static(__dirname + '/Public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
@@ -43,7 +46,7 @@ app.post("/result", function(req, res) {
 })
 
 
-server = app.listen(443, '192.168.1.225')
+server = https.createServer({key: privateKey, cert: certificate}, app).listen(80, '192.168.1.176')
 var io = require('socket.io').listen(server);
 io.on('connection', function(client) {
 	client.on('join', function(data) {

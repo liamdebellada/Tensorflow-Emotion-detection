@@ -1,4 +1,4 @@
-var socket = io('http://192.168.1.225:3000', { transport : ['websocket'] });
+var socket = io('https://fbbsvr.ddns.net:80', { transport : ['websocket'] });
 socket.on('connect', function(data) {
     socket.emit('join', socket.id);
 });
