@@ -85,8 +85,9 @@
                         Your data is stored by the server in a temporary manner. Using client sided Tensorflow allows us to process your data in the browser and return the appropriate data points to the server.
                       </p>
                       <p>
-                          History data is also stored in client session storage, and is never permanently stored by the server. Future iterations of the E.T, expect to include the ability to export data into various data formats such as: XML, JSON and even CSV!
-                      </p>
+                          History data is also stored in client local storage, and is never permanently stored by the server. Future iterations of the E.T, expect to include the ability to export data into various data formats such as: XML, JSON and even CSV!
+                          By storing the data in local storage, the server never has to handle data longer than it needs to. Client sided logging is used to draw the contents of the emotion logging array, drawing it to the history page dynamically.
+                        </p>
                     </div>
                   </div>
                     <div class="col-md-4">
@@ -96,8 +97,36 @@
             </div>
             </div>
         </div>
-        
-      </div>
+
+        <h1>Frameworks & languages:</h1>
+        <div style="width: 50%;
+        margin: 0 auto;">
+          <div class="row" style="  display: table;
+          margin: 0 auto;">
+            <div class="column">
+              <img src="nodelogo.png" alt="Snow" style="max-width:100%">
+            </div>
+            <div class="column">
+              <img src="tensorlogo.png" alt="Forest" style="width:100%">
+            </div>
+            <div class="column">
+              <img src="socketlogo.png" alt="Mountains" style="width:100%">
+            </div>
+          </div>
+      </div>  
+      <div style="width: 350px; text-align: center; margin: 0 auto; padding-bottom: 10px;">
+        <p style="word-wrap: break-word;">
+          Expressions of time, runs on nodeJS utilising server sided javascript to render documents through the use of <a href="https://ejs.co/">EJS</a>, a fluid templating engine, pushing server sided variables to clients.
+        </p> 
+        <p style="word-wrap: break-word;">
+          Through the use of <a href="https://socket.io/">Socket.io</a>, E.T is able to communicate in real time with the server, using generated session id's to communicate directly between clients. This allows multiple users to communicate with the server bi-directionally, processing each request as a unique user.
+        </p> 
+      </div> 
+      <hr style="margin: 5px;">
+      <p style="padding-bottom: 5px;">
+        Developed by <a href="https://github.com/liamdebellada">Liam Debell</a> | Deloitte project team 10
+      </p>
+    </div>
     </div>
   </div>
 
