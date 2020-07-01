@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Expressions of time</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="page.css">
+  
+  
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">E.<text style="color:#51a698">T</text></a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Scan <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/History">History</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/How">How it works?</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="fulldivider">
+    <div class="childdivider">
+      <div class="contentdiv">
+        <h1 style="padding-top: 10px;">How <text style="color: #51a698;">E.T</text> works:</h1>
+        <div style="width: auto; max-width: 400px; margin: 0 auto;">
+          <p style="word-wrap: break-word;">
+            Through the use of client sided tensorflowJS, E.T utilises <a href="https://justadudewhohacks.github.io/face-api.js/docs/index.html">face-apiJS</a> alongside a small dataset of
+            faces and expressions, allowing the client to predict a users facial emotions.
+          </p>
+
+        </div>
+        <div class = "content-div-custom">
+            <div class="container mt-5">
+              <div class="card" style="border: none; background-color: #f8f9fa">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h2>How we recognise faces?</h2>
+                      <p>
+                        For face recognition, a ResNet-34 like architecture is implemented to compute a face descriptor (a feature vector with 128 values) from any given face image, which is used to describe the characteristics of a persons face. The model is not limited to the set of faces used for training, meaning you can use it for face recognition of any person, for example yourself. You can determine the similarity of two arbitrary faces by comparing their face descriptors, for example by computing the euclidean distance or using any other classifier of your choice.
+                      </p>
+                      <p>
+                          Facial data is recorded for 5 seconds every time you begin the scan, this data is then posted to the server, where all of the information is checked and sorted, crosschecking it against the tips API, to return appropriate and useful responses based on the data collected.
+                      </p>
+                    </div>
+                  </div>
+                    <div class="col-md-4">
+                        <img src="https://user-images.githubusercontent.com/31125521/41507950-e121b05e-723c-11e8-89f2-d8f9348a8e86.png" class="img-fluid">
+                        <img src="https://miro.medium.com/max/2776/1*ZzxcsNp5WywDzcbEIyDD5g.png" class="img-fluid" style="height: 149px; width: 300px; margin-top: 10px; margin-bottom: 10px;">
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class = "content-div-custom">
+            <div class="container mt-5">
+              <div class="card" style="border: none; background-color: #f8f9fa">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h2>Your data</h2>
+                      <p>
+                        Your data is stored by the server in a temporary manner. Using client sided Tensorflow allows us to process your data in the browser and return the appropriate data points to the server.
+                      </p>
+                      <p>
+                          History data is also stored in client session storage, and is never permanently stored by the server. Future iterations of the E.T, expect to include the ability to export data into various data formats such as: XML, JSON and even CSV!
+                      </p>
+                    </div>
+                  </div>
+                    <div class="col-md-4">
+                        <img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698634-icon-118-lock-rounded-512.png" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

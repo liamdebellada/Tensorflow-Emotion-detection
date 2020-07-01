@@ -5,7 +5,6 @@ socket.on('connect', function(data) {
 
 const video = document.getElementById('video')
 var complete = false;
-
 function begin() {
     Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -20,9 +19,10 @@ function begin() {
           }, 5000)
       )
 }
-
+var results = []
 
 function getVideo() {
+    results = []
     navigator.getUserMedia(
         { video: {} },
         stream => video.srcObject = stream,
@@ -30,7 +30,6 @@ function getVideo() {
     )
 }
 
-results = []
 
 video.addEventListener('play', () => {
     const canvas = faceapi.createCanvasFromMedia(video)
@@ -41,13 +40,10 @@ video.addEventListener('play', () => {
         setInterval(async () => {
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
             const resizedDetections = faceapi.resizeResults(detections, displaySize)
-            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
             result = resizedDetections[0].expressions
             results.push(result)
             }, 100)
     } else {
-        console.log(results)
         fetch('/result', {
             method: 'POST',
             headers: {
@@ -62,11 +58,38 @@ video.addEventListener('play', () => {
     }
 })
 
+
 socket.on('messages', function(data) {
-    console.log(data)
-    var full;
-    for (item in data) {
-        full = full + item
+    if (data.length == 0) {
+        document.getElementById("results").innerText = "No emotion detected"
     }
-    document.getElementById("results").innerText = data
+    else {
+        document.getElementById("emotionTitle").innerText = "You are expressing the following emotions:"
+        document.getElementById("results").innerText = data
+    }
+
+    var entries = JSON.parse(localStorage.getItem("allEntries"));
+    if(entries == null) entries = [];
+
+    var date = new Date()
+    currentDate = date.toLocaleString()
+
+    for (item in data) {
+        console.log(data[item])
+        var setup = data[item] + "?" + currentDate
+        entries.push(setup)
+    }
+
+    localStorage.setItem("allEntries", JSON.stringify(entries));
+    
+
+
 });
+
+socket.on('tips', function(data) {
+    for (item in data) {
+        tip = document.createElement("h1").innerText = data[item].tip
+        document.getElementById("tipcontainer").append(tip)
+    }
+    document.getElementById("tipTitle").innerText = "Here are some tips to help you throughout the day:"
+})

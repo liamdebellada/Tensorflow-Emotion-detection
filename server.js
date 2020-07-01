@@ -14,20 +14,34 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.get("/", function(req, res) {
-    fs.readFile('content.json', function (error, data) {
-		if (error) {
-			res.status(500).end()
-		} else {
-			res.render('main.ejs', {
-                items: JSON.parse(data)
-			})
-        }
-    })
+	res.render('main.ejs')
+})
+
+function getTips(emotions) {
+	var items;
+	var passedEmotions = emotions;
+	selectedTips = []
+	items = fs.readFileSync('content.json');
+	items = items.toString()
+	items = JSON.parse(items)
+	for (var i = 0; i < passedEmotions.length; i++) {
+		//console.log(items[passedEmotions[i]])
+		response = items[passedEmotions[i]][Math.floor(Math.random() * items[passedEmotions[i]].length)];
+		selectedTips.push(response)
+	}
+	return selectedTips
+}
+
+app.get("/History", function(req, res) {
+	res.render("history.ejs")
+})
+
+app.get("/How", function(req, res) {
+	res.render("how.ejs")
 })
 
 app.post("/result", function(req, res) {
 	var results = req.body.toBeCalc
-	console.log(results)
 
 	var keys = []
 
@@ -41,12 +55,14 @@ app.post("/result", function(req, res) {
 		keys.push(Object.keys(results[i]).find(key => results[i][key] === l))
 	}
 	var final = Array.from(new Set(keys)) //results to be sent to the client
+	result = getTips(final)
 	io.to(req.body.socketid).emit('messages', final);
+	io.to(req.body.socketid).emit('tips', result)
 
 })
 
 
-server = https.createServer({key: privateKey, cert: certificate}, app).listen(80, '192.168.1.176')
+server = https.createServer({key: privateKey, cert: certificate}, app).listen(80, '192.168.1.116')
 var io = require('socket.io').listen(server);
 io.on('connection', function(client) {
 	client.on('join', function(data) {

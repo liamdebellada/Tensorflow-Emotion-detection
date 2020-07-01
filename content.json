@@ -1,66 +1,76 @@
 {
-    "page" : [
+    "neutral" : [
         {
-            "name" : "A JSON based webpage using NODEjs",
-            "card" : [
-                {
-                    "title" : "Where does the JSON come from?",
-                    "desc" : "This is a description"
-                }
-            ]
-        }
-    ],
-    "nodepage" : [
-        {
-            "name" : "About NODEjs"
-        }
-    ],
-    "cards" : [
-        {
-            "header" : "JSON render",
-            "desc" : "The specified JSON file is hosted on the backend of the server, and is sent to clients using express.js res object."
+            "tip" : "Good job"
         },
         {
-            "header" : "Looping objects",
-            "desc" : "Using the ejs rendering framework, data from the backend can be used inline with page elements to generate dynamic dividers."
-        },
-        {
-            "header" : "Image references",
-            "desc" : "Externally or internally hosted images can be pulled directly from the JSON file as a reference to that specific document. See example below:"
+            "tip" : "Keep it up!"
         }
     ],
-    "dataref" : [
+    "happy" : [
         {
-            "smalltitle" : "Images",
-            "biggertitle" : "Referencing remote images",
-            "subtext" : "",
-            "desc" : "Images can be referenced through the use of a CDN (content delivery network) or server based files, and must be requested by the client through the use of JSON.",
-            "referenceurl" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fphotos%2F1RnPg7tET_s&psig=AOvVaw2PYUcS6ggBg8N037OT_o6E&ust=1588269893880000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCNCh4N-pjukCFQAAAAAdAAAAABAF",
-            "img" : "../cardimg.png"
+            "tip" : "Well done, keep up the good work!"
         },
         {
-            "smalltitle" : "Files",
-            "biggertitle" : "Linking other data",
-            "subtext" : "",
-            "desc" : "Other data formats are similarly accessed, but will require proper permissions in order for the user to fully use them.",
-            "referenceurl" : "https://pastebin.com/raw/bQWg8c96",
-            "img" : "../doc.png"
+            "tip" : "Your are doing Great"
+        },
+        {
+            "tip" : "Very Impressed, your doing amazing"
         }
     ],
-    "objectcall" : [
+    "sad" : [
         {
-            "title" : "Pulling data",
-            "body" : "Data is stored within objects and arrays, arrays can contain multiple objects which can include additional multi-dimensional arrays, which require specified indexing for access to specific data items. Check out this example of a multi-dimensional json array being used to pull specific data items.",
-            "body2" : "Items can be accessed similarly to how a dictionary is accessed through the use of keys and associated values. In order to access a specific value, you would need to reference its key. Depending on the data type associated with the key, data can be immediately returned to the front end device. However in some cases, such as the one shown below, data requires additional positional data, such as an index value. The index value is used to specify where to look in the array to access a specific key. Once you have the array index and parent object you can call the value like this: objectcall.subarray[0].title. Where 0 is our index position, and title is the key we are looking for.",
-            "img" : "../object.png",
-            "subarray" : [
-                {
-                    "title" : "I'm being called within another array",
-                    "other" : "So am I!"
-                }
-            ]
+            "tip" : "Don’t worry"
+        },
+        {
+            "tip" : "Everything will be fine"
+        },
+        {
+            "tip" : "Cheer yourself up a little"
         }
-        
-        
+    ],
+    "fearful" : [
+        {
+            "tip" : "Have a break, try thinking of what it is you have to do first."
+        },
+        {
+            "tip" : "Don’t panic! Have a read through before carrying on your work"
+        },
+        {
+            "tip" : "Take a deep breath and think everything through"
+        }
+    ],
+    "disgusted" : [
+        {
+            "tip" : "You can do much better"
+        },
+        {
+            "tip" : "Still need progressing"
+        },
+        {
+            "tip" : "Wasting your precious time"
+        }
+    ],
+    "surprised" : [
+        {
+            "tip" : "Wow, amazing work!"
+        },
+        {
+            "tip" : "Unbelievable Effort!"
+        },
+        {
+            "tip" : "Exceeding expectations right now!"
+        }
+    ],
+    "angry" : [
+        {
+            "tip" : "Stop being angry"
+        },
+        {
+            "tip" : "Take a moment to chill out."
+        },
+        {
+            "tip" : "Dont worry think about things you enjoy"
+        }
     ]
 }

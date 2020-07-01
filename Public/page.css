@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&family=Work+Sans:wght@300&display=swap');
+
+* { margin:0; padding:0; }
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    height: 100vh;
+}
+
+.vstream {
+    padding: 0;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 0 auto;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid #d4d4d4;
+    background: url('camera.png') 20% no-repeat;
+    background-size: 125px;
+    background-position: center;
+  }
+
+  canvas {
+    position: absolute;
+  }
+
+  .nav-link:hover {
+    background-color: #f1f1f1;
+    border-radius: 15px;
+  }
+
+.fulldivider {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #efefef;
+    overflow: auto;
+}
+
+.childdivider {
+    position: relative;
+    height: auto;
+    width: 80%;
+    background-color: #f8f9fa;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 10px 10px 24px -13px rgba(0,0,0,0.75);
+    text-align: center;
+}
